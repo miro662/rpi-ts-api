@@ -3,7 +3,7 @@ var child_process = require("child_process");
 
 var cpuTempSensorFile = "/sys/class/thermal/thermal_zone0/temp";
 var gpuCheckCmd = "/opt/vc/bin/vcgencmd measure_temp";
-var checkInterval = 2000;
+var checkInterval = 20000;
 
 function getCpuTemperature(callback) {
 	fs.readFile(cpuTempSensorFile, function(err, data) {
@@ -33,26 +33,39 @@ function getGpuTemperature(callback) {
 
 var temperatures = {
 	cpu: NaN,
-	gpu: NaN
+	gpu: NaN,
+	update: function() {
+		getCpuTemperature(function(err, data) {
+			if (err) {
+				temperatures.cpu = NaN;
+				return console.log(err);
+			}
+			temperatures.cpu = data;
+		});
+		getGpuTemperature(function(err, data) {
+			if (err) {
+				temperatures.cpu = NaN;
+				return console.log(err);
+			}
+			temperatures.gpu = data;
+		});
+	}
 }
 
-setInterval(function() {
-	getCpuTemperature(function(err, data) {
-		if (err) {
-			temperatures.cpu = NaN;
-			return console.log(err);
-		}
-		temperatures.cpu = data;
-	});
-	getGpuTemperature(function(err, data) {
-		if (err) {
-			temperatures.cpu = NaN;
-			return console.log(err);
-		}
-		temperatures.gpu = data;
-	});
-}, checkInterval);
+temperatures.update();
+setInterval(temperatures.update, checkInterval);
 
-setTimeout(function() {
-	console.log(JSON.stringify(temperatures));
-}, 5000);
+var port = process.env.PORT || 8814;
+
+var express = require('express');
+var app = express();
+
+app.use("/", express.static("static"));
+
+app.get('/temperatures', function(req, res) {
+	res.jsonp(temperatures);
+});
+
+app.listen(port, function() {
+	console.log("Listening on 8814");
+})

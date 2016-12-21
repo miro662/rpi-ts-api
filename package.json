@@ -4,7 +4,8 @@
   "description": "Simple Web API for reading temperatures from on-board sensors of your Raspberry Pi",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/miro662/rpi-ts-api/issues"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
