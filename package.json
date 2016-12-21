@@ -1,0 +1,26 @@
+{
+  "name": "rpi-ts-api",
+  "version": "0.0.0",
+  "description": "Simple Web API for reading temperatures from on-board sensors of your Raspberry Pi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miro662/rpi-ts-api"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "internet",
+    "of",
+    "things",
+    "iot"
+  ],
+  "author": "Mirosław Błażej",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miro662/rpi-ts-api/issues"
+  }
+}
