@@ -3,7 +3,7 @@ var child_process = require("child_process");
 
 var cpuTempSensorFile = "/sys/class/thermal/thermal_zone0/temp";
 var gpuCheckCmd = "/opt/vc/bin/vcgencmd measure_temp";
-var checkInterval = 20000;
+var checkInterval = 1000;
 
 function getCpuTemperature(callback) {
 	fs.readFile(cpuTempSensorFile, function(err, data) {
@@ -67,5 +67,5 @@ app.get('/temperatures', function(req, res) {
 });
 
 app.listen(port, function() {
-	console.log("Listening on 8814");
+	console.log("Listening on " + port);
 })
