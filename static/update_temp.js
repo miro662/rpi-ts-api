@@ -1,9 +1,8 @@
 $(document).ready(function() {
     function updateTemps() {
         $.get("/temperatures", function(data) {
-            var temps = JSON.parse(data);
-            $("#cpu .c").text = temps.cpu;
-            $("#gpu .c").text = temps.gpu;
+            $("#cpu .c").text(data.cpu);
+            $("#gpu .c").text(data.gpu);
         });
     }
 
