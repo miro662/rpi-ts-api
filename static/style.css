@@ -1,0 +1,19 @@
+.temp {
+    font-size: 5em;
+}
+
+#cpu {
+    color: #D90000;
+}
+
+#cpu .unit {
+    color: #FF7070;
+}
+
+#gpu {
+    color: #D96200;
+}
+
+#gpu .unit {
+    color: #FFB170;
+}

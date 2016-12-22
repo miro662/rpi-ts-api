@@ -1,1 +1,27 @@
-<h1>TODO: frontend</h1>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Raspberry Pi Temperatures</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="Stylesheet" href="style.css">
+        <link rel="Stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="update_temp.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>CPU temperature</h1>
+                    <div class="temp" id="cpu"><span class="c">?</span> <span class="unit">'C</span></div>
+                </div>
+                <div class="col-md-6">
+                    <h1>GPU temperature</h1>
+                    <div class="temp" id="gpu"><span class="c">?</span> <span class="unit">'C</span></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
